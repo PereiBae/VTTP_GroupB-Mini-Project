@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Too Young</title>
+    <link rel="stylesheet" href="/css/global.css">
+    <link rel="stylesheet" href="/css/home.css"> <!-- Align with main styles -->
+</head>
+<body>
+<div th:insert="~{fragments/header :: header}"></div>
+
+<div class="container too-young-container">
+    <h1>Sorry, you are too young to register!</h1>
+    <p>The legal drinking age is 18 years old. Try again when you reach the legal age.</p>
+    <a href="/register"><button class="register-btn">Go Back to Register</button></a>
+</div>
+</body>
+</html>

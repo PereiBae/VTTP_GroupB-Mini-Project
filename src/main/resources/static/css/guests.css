@@ -1,0 +1,110 @@
+/* Guest Table Styling */
+.guest-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto; /* Center align table */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Add subtle shadow for depth */
+    border-radius: 8px; /* Rounded corners */
+    overflow: hidden; /* Ensure rounded corners apply to table */
+}
+
+.guest-table th, .guest-table td {
+    text-align: left;
+    padding: 15px 20px; /* Add padding for breathing room */
+    vertical-align: middle; /* Align content vertically */
+    font-family: 'Poppins', sans-serif;
+}
+
+.guest-table th {
+    background: linear-gradient(135deg, #ff6f61, #e65c50); /* Gradient header background */
+    color: white;
+    text-transform: uppercase; /* Consistent with the Flyhyer theme */
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+
+.guest-table tr:nth-child(odd) {
+    background-color: #f9f9f9;
+}
+
+.guest-table tr:nth-child(even) {
+    background-color: #ffffff;
+}
+
+.guest-table tr:hover {
+    background-color: #ffefec; /* Add hover effect for rows */
+}
+
+/* Guest Form Styling */
+.guest-form {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Add spacing between form elements */
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: #ffffff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* Subtle shadow for form */
+    max-width: 600px; /* Restrict form width */
+    margin: 0 auto; /* Center align the form */
+}
+
+.guest-form input, .guest-form select {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    color: #333;
+    max-width: 100%;
+}
+
+.guest-form div {
+    display: flex;
+    flex-wrap: wrap; /* Ensure items wrap if they exceed one line */
+    gap: 10px; /* Add spacing between checkboxes */
+}
+
+.guest-form div input {
+    margin-right: 5px; /* Space between the checkbox and the label */
+}
+
+.guest-form label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+/* Guest Form Button */
+.guest-form button {
+    background: linear-gradient(135deg, #007BFF, #0056D2); /* Gradient for buttons */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s ease-in-out;
+}
+
+.guest-form button:hover {
+    background: linear-gradient(135deg, #0056D2, #0041A3);
+    transform: scale(1.05); /* Slight scale effect on hover */
+}
+
+/* Adjusting table action buttons */
+.guest-table .delete-btn {
+    background: #ff6f61;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    transition: background 0.3s ease-in-out;
+}
+
+.guest-table .delete-btn:hover {
+    background: #e65c50;
+}

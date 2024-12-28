@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Party Management</title>
+  <link rel="stylesheet" href="/css/global.css">
+  <link rel="stylesheet" href="/css/home.css">
+  <link rel="stylesheet" href="/css/parties.css">
+</head>
+<body>
+<div th:insert="~{fragments/header :: header}"></div>
+
+<div class="parties-container">
+  <h1>Your Parties</h1>
+  <a href="/home/parties/create" class="create-btn">Create New Party</a>
+
+  <table class="party-table">
+    <thead>
+    <tr>
+      <th>Name</th>
+      <th>Date</th>
+      <th>Time</th>
+      <th>Location</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="party : ${parties}">
+      <td th:text="${party.name}"></td>
+      <td th:text="${party.date}"></td>
+      <td th:text="${party.time}"></td>
+      <td th:text="${party.location}"></td>
+      <td>
+        <a th:href="@{'/home/parties/edit/' + ${party.id}}" class="edit-btn">Edit</a>
+        <form th:action="@{'/home/parties/delete/' + ${party.id}}" method="post" style="display: inline;">
+          <button type="submit" class="delete-btn">Delete</button>
+        </form>
+        <a th:href="@{'/home/parties/details/' + ${party.id}}" class="edit-btn">Details</a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+</body>
+</html>

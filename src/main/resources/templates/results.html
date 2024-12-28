@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Search Results</title>
+  <link rel="stylesheet" href="/css/global.css">
+  <link rel="stylesheet" href="/css/results.css">
+</head>
+<body>
+<div th:insert="~{fragments/header :: header}"></div>
+
+<div class="search-container">
+  <h1>Search Drinks</h1>
+
+  <!-- Filter/Search Form -->
+  <form method="GET" action="/home/results" class="filter-form">
+    <label for="ingredient">Ingredient:</label>
+    <select id="ingredient" name="ingredient">
+      <option value="">-- Select Ingredient --</option>
+      <option th:each="ingredient : ${ingredients}"
+              th:value="${ingredient}"
+              th:text="${ingredient}"
+              th:selected="${ingredient == currentIngredient}"></option>
+    </select>
+
+    <label for="category">Category:</label>
+    <select id="category" name="category">
+      <option value="">-- Select Category --</option>
+      <option th:each="category : ${categories}"
+              th:value="${category}"
+              th:text="${category}"
+              th:selected="${category == currentCategory}"></option>
+    </select>
+
+    <label for="alcoholic">Alcoholic:</label>
+    <select id="alcoholic" name="alcoholic">
+      <option value="">-- Select Alcoholic --</option>
+      <option th:each="alcoholic : ${alcoholicFilters}"
+              th:value="${alcoholic}"
+              th:text="${alcoholic}"
+              th:selected="${alcoholic == currentAlcoholic}"></option>
+    </select>
+
+    <button type="submit" class="search-btn">Search</button>
+  </form>
+
+  <!-- No Results Message -->
+  <div th:if="${#lists.isEmpty(results)}" class="no-results">
+    <p>No results found. Please try a different search.</p>
+  </div>
+
+  <!-- Results Grid -->
+  <div th:if="${!#lists.isEmpty(results)}" class="results-grid">
+    <div th:each="drink : ${results}" class="result-card">
+      <img th:src="${drink.thumbnail}" alt="Drink Thumbnail">
+      <h3 th:text="${drink.name}"></h3>
+      <a th:href="@{'/home/details/' + ${drink.idDrink}}" class="details-btn">View Details</a>
+    </div>
+  </div>
+
+  <!-- Pagination -->
+  <div class="pagination">
+    <span class="page-info" th:text="'Page ' + ${currentPage} + ' of ' + ${totalPages}"></span>
+    <div class="page-links">
+      <a th:if="${currentPage > 1}"
+         th:href="@{'/home/results?page=' + (${currentPage - 1}) + '&ingredient=' + ${currentIngredient} + '&category=' + ${currentCategory} + '&alcoholic=' + ${currentAlcoholic}}">
+        &laquo; Previous
+      </a>
+      <a th:if="${currentPage < totalPages}"
+         th:href="@{'/home/results?page=' + (${currentPage + 1}) + '&ingredient=' + ${currentIngredient} + '&category=' + ${currentCategory} + '&alcoholic=' + ${currentAlcoholic}}">
+        Next &raquo;
+      </a>
+    </div>
+  </div>
+</div>
+</body>
+</html>

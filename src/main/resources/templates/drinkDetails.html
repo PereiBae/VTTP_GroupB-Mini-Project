@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drink Details</title>
+    <link rel="stylesheet" href="/css/global.css">
+    <link rel="stylesheet" href="/css/details.css">
+</head>
+<body>
+<div th:insert="~{fragments/header :: header}"></div>
+
+<div class="container details-container">
+    <!-- Image Section -->
+    <div class="image-section">
+        <img th:src="${details.thumbnail}" alt="Drink Image" class="drink-image">
+    </div>
+
+    <!-- Details Section -->
+    <div class="details-section">
+        <h2 class="drink-title" th:text="${details.name}">Name</h2>
+
+        <h3 class="section-title">Ingredients</h3>
+        <ul class="ingredients-list">
+            <li th:each="ingredient : ${details.ingredients}" th:text="${ingredient}"></li>
+        </ul>
+
+        <h3 class="section-title">Instructions</h3>
+        <p class="instructions-text" th:text="${details.instructions}"></p>
+
+        <div class="button-container">
+            <form th:action="@{/home/details/{drinkId}(drinkId=${details.id})}" method="post">
+                <button type="submit" class="btn bookmark-btn">Bookmark</button>
+            </form>
+            <a th:href="@{/getDrinkDetails/{drinkId}(drinkId=${details.id})}" class="btn bookmark-btn">
+                Download CSV File
+            </a>
+        </div>
+    </div>
+</div>
+</body>
+</html>

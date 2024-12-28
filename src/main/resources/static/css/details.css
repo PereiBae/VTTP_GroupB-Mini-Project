@@ -1,0 +1,84 @@
+/* Overall Layout */
+.details-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-top: 30px;
+}
+
+/* Image Section */
+.image-section {
+    flex: 1 1 40%;
+    text-align: center;
+}
+
+.drink-image {
+    max-width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Details Section */
+.details-section {
+    flex: 1 1 55%;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+/* Section Titles */
+.drink-title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.section-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #007BFF;
+    margin-bottom: 10px;
+}
+
+/* Ingredients List */
+.ingredients-list {
+    list-style: disc inside;
+    margin-bottom: 20px;
+    color: #666;
+    font-size: 1rem;
+}
+
+/* Instructions */
+.instructions-text {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Button Container */
+.button-container {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+/* Bookmark Button */
+.bookmark-btn {
+    background: linear-gradient(135deg, #007BFF, #0056D2);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.bookmark-btn:hover {
+    background: linear-gradient(135deg, #0056D2, #0041A3);
+    transform: scale(1.05);
+}

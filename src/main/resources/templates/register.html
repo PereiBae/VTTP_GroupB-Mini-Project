@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register | Mixology Map</title>
+  <link rel="stylesheet" href="/css/global.css">
+  <link rel="stylesheet" href="/css/form.css">
+</head>
+<body>
+<div th:insert="~{fragments/header :: header}"></div>
+
+<div class="form-container">
+  <h1>Create an Account</h1>
+  <p>Join Mixology Map and start your journey!</p>
+
+  <form method="post" action="/registration" th:object="${userregister}">
+    <div class="input-group">
+      <label for="email"><i class="fas fa-envelope"></i> Email</label>
+      <input type="email" id="email" th:field="*{email}" placeholder="Email Address" required>
+      <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="error"></p>
+    </div>
+
+    <div class="input-group">
+      <label for="birthDate"><i class="fas fa-calendar"></i> Birthday</label>
+      <input type="date" id="birthDate" th:field="*{birthDate}" required>
+      <p th:if="${#fields.hasErrors('birthDate')}" th:errors="*{birthDate}" class="error"></p>
+    </div>
+
+    <div class="input-group">
+      <label for="username"><i class="fas fa-user"></i> Username</label>
+      <input type="text" id="username" th:field="*{username}" placeholder="Username" required>
+      <p th:if="${#fields.hasErrors('username')}" th:errors="*{username}" class="error"></p>
+    </div>
+
+    <div class="input-group">
+      <label for="password"><i class="fas fa-lock"></i> Password</label>
+      <input type="password" id="password" th:field="*{password}" placeholder="Password" required>
+      <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="error"></p>
+    </div>
+
+    <button type="submit" class="btn">Register</button>
+    <p class="error" th:if="${message}" th:text="${message}"></p>
+
+    <div class="form-footer">
+      <p>Already have an account? <a th:href="@{/login}">Sign in here</a></p>
+    </div>
+  </form>
+</div>
+</body>
+</html>

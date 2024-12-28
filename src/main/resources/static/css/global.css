@@ -1,0 +1,100 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f5f7fa;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.btn {
+    padding: 10px 20px;
+    background-color: #ff6f61;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.btn:hover {
+    background-color: #e65c50;
+}
+
+header {
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 10px 0;
+}
+
+header .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header .logo a {
+    font-size: 24px;
+    font-weight: 700;
+    color: #ff6f61;
+}
+
+header .navigation a {
+    margin: 0 15px;
+    font-size: 16px;
+    color: #333;
+}
+
+header .auth-section .btn {
+    margin-left: 10px;
+}
+
+/* Dropdown Styling */
+.user-menu {
+    position: relative;
+    cursor: pointer;
+    font-weight: bold;
+    color: #333;
+    font-size: 16px;
+}
+
+.user-menu:hover .dropdown {
+    display: block; /* Show dropdown on hover */
+}
+
+.dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 200px;
+    z-index: 10;
+    padding: 10px 0;
+}
+
+.dropdown a {
+    display: block;
+    padding: 10px 15px;
+    color: #333;
+    font-size: 14px;
+    text-align: left;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.dropdown a:hover {
+    background-color: #f0f0f0;
+}

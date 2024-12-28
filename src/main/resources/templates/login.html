@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login | Mixology Map</title>
+  <link rel="stylesheet" href="/css/global.css">
+  <link rel="stylesheet" href="/css/form.css">
+</head>
+<body>
+<div th:insert="~{fragments/header :: header}"></div>
+
+<div class="form-container">
+  <h1>Sign In</h1>
+  <p>Enter your details below to explore the world of cocktails.</p>
+
+  <form method="POST" action="/loggingin" th:object="${userlogin}">
+    <div class="input-group">
+      <label for="identifier"><i class="fas fa-user"></i> Email/Username</label>
+      <input type="text" id="identifier" th:field="*{identifier}" placeholder="Username or Email" required>
+      <p th:if="${#fields.hasErrors('identifier')}" th:errors="*{identifier}" class="error"></p>
+    </div>
+
+    <div class="input-group">
+      <label for="password"><i class="fas fa-lock"></i> Password</label>
+      <input type="password" id="password" th:field="*{password}" placeholder="Password" required>
+      <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="error"></p>
+    </div>
+
+    <button type="submit" class="btn">Sign In</button>
+    <p class="error" th:if="${message}" th:text="${message}"></p>
+
+    <div class="form-footer">
+      <p>Don't have an account? <a th:href="@{/register}">Register here</a></p>
+    </div>
+  </form>
+</div>
+</body>
+</html>

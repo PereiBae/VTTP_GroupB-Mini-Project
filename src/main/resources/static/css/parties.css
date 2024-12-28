@@ -1,0 +1,115 @@
+/* Specific Container for Parties Page */
+.parties-container {
+    padding: 20px;
+    background-color: #ffffff; /* Clean white background */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* Soft shadow */
+    border-radius: 10px; /* Rounded corners */
+    margin-top: 20px;
+}
+
+/* Table Styling */
+.party-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    border-radius: 10px;
+    overflow: hidden; /* Prevents border collapse issues */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adds subtle shadow */
+}
+
+.party-table th, .party-table td {
+    text-align: left;
+    padding: 15px;
+    font-size: 14px;
+    color: #333;
+    border-bottom: 1px solid #e0e0e0; /* Soft border for rows */
+}
+
+.party-table th {
+    background-color: #ff6f61; /* Primary theme color for header */
+    color: #ffffff;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 14px;
+}
+
+.party-table td {
+    background-color: #f9f9f9; /* Light background for table rows */
+}
+
+.party-table tr:nth-child(even) td {
+    background-color: #fdfdfd; /* Alternating row color */
+}
+
+.party-table tr:hover td {
+    background-color: #ffe6e0; /* Soft hover effect */
+    cursor: pointer; /* Indicates interactivity */
+}
+
+/* Create Party Button */
+.create-btn {
+    display: inline-block;
+    background-color: #ff6f61;
+    color: #ffffff;
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.create-btn:hover {
+    background-color: #e65c50; /* Darker hover effect */
+}
+
+/* Action Buttons */
+.edit-btn, .delete-btn {
+    color: #ffffff;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: bold;
+    text-decoration: none;
+    border: none;
+    display: inline-block;
+    margin-right: 5px;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle button shadow */
+}
+
+.edit-btn {
+    background-color: #007bff; /* Blue color for edit */
+}
+
+.edit-btn:hover {
+    background-color: #0056b3; /* Darker blue hover */
+}
+
+.delete-btn {
+    background-color: #ff6f61; /* Primary theme color for delete */
+}
+
+.delete-btn:hover {
+    background-color: #e65c50; /* Darker red hover */
+}
+
+/* Responsive Table Adjustments */
+@media (max-width: 768px) {
+    .party-table th, .party-table td {
+        font-size: 12px;
+        padding: 10px;
+    }
+
+    .create-btn {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+
+    .edit-btn, .delete-btn {
+        font-size: 12px;
+        padding: 6px 10px;
+    }
+}

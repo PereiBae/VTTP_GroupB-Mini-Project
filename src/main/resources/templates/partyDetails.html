@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Party Details</title>
+  <link rel="stylesheet" href="/css/global.css">
+  <link rel="stylesheet" href="/css/partyDetails.css">
+</head>
+<body>
+<div th:insert="~{fragments/header :: header}"></div>
+
+<div class="partyDetails-container">
+  <!-- Party Information -->
+  <h1 class="section-title" th:text="${party.name}"></h1>
+  <p><strong>Date:</strong> <span th:text="${party.date}"></span></p>
+  <p><strong>Time:</strong> <span th:text="${party.time}"></span></p>
+  <p><strong>Location:</strong> <span th:text="${party.location}"></span></p>
+
+  <!-- Add Guests Section -->
+  <div class="form-section">
+    <h2>Add Guests</h2>
+    <form method="post" th:action="@{'/home/party/' + ${party.id} + '/addGuest'}">
+      <label for="guestId">Select Guest:</label>
+      <select id="guestId" name="guestId" required>
+        <option value="">-- Select a Guest --</option>
+        <option th:each="guest : ${availableGuests}"
+                th:value="${guest.id}"
+                th:text="${guest.name}">
+        </option>
+      </select>
+      <button type="submit" class="action-btn">Add Guest</button>
+    </form>
+  </div>
+
+  <!-- Guests Section -->
+  <h2 class="section-title">Guests</h2>
+  <table class="details-table">
+    <thead>
+    <tr>
+      <th>Name</th>
+      <th>RSVP</th>
+      <th>Preferences</th>
+      <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="guest : ${guests}">
+      <td th:text="${guest.name}"></td>
+      <td th:text="${guest.rsvp}"></td>
+      <td>
+        <ul>
+          <li th:each="pref : ${guest.preferences}" th:text="${pref}"></li>
+        </ul>
+      </td>
+      <td>
+        <form th:action="@{'/home/party/' + ${party.id} + '/removeGuest/' + ${guest.id}}" method="post">
+          <button type="submit" class="delete-btn">Remove</button>
+        </form>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <!-- Add Drinks Section -->
+  <div class="form-section">
+    <h2>Add Drinks</h2>
+    <form method="post" th:action="@{'/home/party/' + ${party.id} + '/addDrink'}">
+      <label for="drinkId">Select Drink:</label>
+      <select id="drinkId" name="drinkId" required>
+        <option value="">-- Select a Drink --</option>
+        <option th:each="drink : ${availableDrinks}"
+                th:value="${drink.id}"
+                th:text="${drink.name}">
+        </option>
+      </select>
+      <button type="submit" class="action-btn">Add Drink</button>
+    </form>
+  </div>
+
+  <!-- Bookmarked Drinks Section -->
+  <h2 class="section-title">Bookmarked Drinks</h2>
+  <table class="details-table">
+    <thead>
+    <tr>
+      <th>Thumbnail</th>
+      <th>Name</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="drink : ${drinks}">
+      <td><img th:src="${drink.thumbnail}" alt="Drink Thumbnail" class="thumbnail"></td>
+      <td th:text="${drink.name}"></td>
+      <td>
+        <a th:href="@{'/home/details/' + ${drink.id}}" class="action-btn">Details</a>
+        <form th:action="@{'/home/party/' + ${party.id} + '/removeDrink/' + ${drink.id}}" method="post">
+          <button type="submit" class="delete-btn">Remove</button>
+        </form>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+</body>
+</html>

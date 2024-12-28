@@ -1,0 +1,112 @@
+/* Form Container Styling */
+.partyEdit-container {
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin-top: 40px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Party Form Styling */
+.party-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.party-form label {
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+.party-form input {
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    font-size: 14px;
+    max-width: 100%;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.party-form input:focus {
+    outline: none;
+    border-color: #007BFF;
+    box-shadow: 0 0 4px rgba(0, 123, 255, 0.5);
+}
+
+/* Button Styling */
+.party-form button {
+    background: linear-gradient(135deg, #FF6F61, #E64A45);
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 12px 20px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.3s ease;
+}
+
+.party-form button:hover {
+    transform: scale(1.05);
+    background: linear-gradient(135deg, #E64A45, #D12F2A);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+    }
+
+    .party-form input {
+        font-size: 14px;
+    }
+
+    .party-form button {
+        font-size: 14px;
+        padding: 10px 15px;
+    }
+}
+/* Form Container Styling */
+.partyEdit-container {
+    padding: 20px 40px; /* Add breathing room */
+}
+
+/* Party Form Styling */
+.party-form {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Space between fields */
+}
+
+.party-form label {.
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.party-form input {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    max-width: 400px;
+}
+
+.party-form button {
+    background-color: #FF6F61;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    max-width: 150px;
+}
+
+.party-form button:hover {
+    background-color: #E64A45;
+}

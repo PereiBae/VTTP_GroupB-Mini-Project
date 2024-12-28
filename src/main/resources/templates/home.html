@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mixology Map</title>
+    <link rel="stylesheet" href="/css/global.css">
+    <link rel="stylesheet" href="/css/home.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+<div th:insert="~{fragments/header :: header}"></div>
+
+<div class="home-container">
+    <!-- Welcome Section -->
+    <section class="welcome-section">
+        <h1>Welcome to Mixology Map!</h1>
+        <p>Discover the art of mixology and explore a world of cocktails. Join us to unlock exclusive tools and save your favorite drinks.</p>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section">
+        <div class="feature">
+            <i class="fas fa-glass-martini-alt"></i>
+            <h3>Explore Drinks</h3>
+            <p>Search and discover a wide variety of cocktails and bookmark your favorites.</p>
+        </div>
+        <div class="feature">
+            <i class="fas fa-user-friends"></i>
+            <h3>Manage Guests</h3>
+            <p>Organize your party guest list and keep track of their preferences.</p>
+        </div>
+        <div class="feature">
+            <i class="fas fa-calendar-alt"></i>
+            <h3>Plan Parties</h3>
+            <p>Create and manage events with ease, and ensure your party is a hit!</p>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section">
+        <h2>Why Choose Mixology Map?</h2>
+        <p>Hosting a party has never been easier! Mixology Map is your all-in-one platform to:</p>
+        <ul>
+            <li><i class="fas fa-check-circle"></i> Discover creative cocktail recipes tailored to your taste.</li>
+            <li><i class="fas fa-check-circle"></i> Manage guest lists and track RSVPs seamlessly.</li>
+            <li><i class="fas fa-check-circle"></i> Bookmark your favorite drinks and plan a perfect menu.</li>
+        </ul>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="cta-section">
+        <h2>Get Started Now!</h2>
+        <p>Sign up today and unlock exclusive tools to take your party planning to the next level.</p>
+        <a href="/register" class="btn cta-btn">Join Now</a>
+    </section>
+</div>
+</body>
+</html>

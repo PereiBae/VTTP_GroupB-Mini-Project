@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Create Party</title>
+  <link rel="stylesheet" href="/css/global.css">
+  <link rel="stylesheet" href="/css/home.css">
+  <link rel="stylesheet" href="/css/partyCreate.css">
+</head>
+<body>
+<div th:insert="~{fragments/header :: header}"></div>
+
+<div class="partycreate-container">
+  <h1>Create a New Party</h1>
+  <form method="post" action="/home/parties/create" class="party-form">
+    <div>
+      <label for="name">Party Name:</label>
+      <input type="text" id="name" name="name" placeholder="Enter party name" required>
+    </div>
+    <div>
+      <label for="date">Date:</label>
+      <input type="date" id="date" name="date" required>
+    </div>
+    <div>
+      <label for="time">Time:</label>
+      <input type="time" id="time" name="time" required>
+    </div>
+    <div>
+      <label for="location">Location (Optional):</label>
+      <input type="text" id="location" name="location" placeholder="Enter location">
+    </div>
+    <button type="submit">Create Party</button>
+  </form>
+</div>
+</body>
+</html>

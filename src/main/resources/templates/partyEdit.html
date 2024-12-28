@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Edit Party</title>
+  <link rel="stylesheet" href="/css/global.css">
+  <link rel="stylesheet" href="/css/partyEdit.css">
+</head>
+<body>
+<div th:insert="~{fragments/header :: header}"></div>
+
+<div class="partyEdit-container">
+  <h1>Edit Party</h1>
+  <form method="post" th:action="@{'/home/parties/edit/' + ${party.id}}" class="party-form">
+    <div>
+      <label for="name">Party Name:</label>
+      <input type="text" id="name" name="name" th:value="${party.name}" placeholder="Enter party name" required>
+    </div>
+    <div>
+      <label for="date">Date:</label>
+      <input type="date" id="date" name="date" th:value="${party.date}" required>
+    </div>
+    <div>
+      <label for="time">Time:</label>
+      <input type="time" id="time" name="time" th:value="${party.time}" required>
+    </div>
+    <div>
+      <label for="location">Location (Optional):</label>
+      <input type="text" id="location" name="location" th:value="${party.location}" placeholder="Enter location">
+    </div>
+    <button type="submit">Update Party</button>
+  </form>
+</div>
+</body>
+</html>

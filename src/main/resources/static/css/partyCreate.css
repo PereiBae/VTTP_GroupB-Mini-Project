@@ -1,0 +1,105 @@
+/* Form Container Styling */
+.partycreate-container {
+    padding: 20px 40px; /* Add breathing room */
+}
+
+/* Party Form Styling */
+.party-form {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Space between fields */
+}
+
+.party-form label {
+    font-weight: bold;/* Container Styling */
+    .container {
+        padding: 20px;
+        background-color: #f9f9f9;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        max-width: 600px;
+        margin: 30px auto;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    /* Party Form Styling */
+    .party-form {
+        display: flex;
+        flex-direction: column;
+        gap: 20px; /* Space between fields */
+    }
+
+    .party-form label {
+        font-weight: bold;
+        color: #333;
+        font-size: 14px;
+        margin-bottom: 5px;
+    }
+
+    .party-form input {
+        padding: 12px;
+        border-radius: 6px;
+        border: 1px solid #ddd;
+        background-color: #fff;
+        font-size: 14px;
+        color: #333;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+
+    .party-form input:focus {
+        outline: none;
+        border: 1px solid #ff6f61;
+        box-shadow: 0 4px 12px rgba(255, 111, 97, 0.2);
+    }
+
+    .party-form button {
+        background: linear-gradient(135deg, #ff6f61, #e64a45);
+        color: white;
+        border: none;
+        padding: 12px 20px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-weight: bold;
+        font-size: 16px;
+        transition: background 0.3s ease, transform 0.2s ease;
+        align-self: flex-start;
+    }
+
+    .party-form button:hover {
+        background: linear-gradient(135deg, #e64a45, #c53834);
+        transform: scale(1.05);
+    }
+
+    /* Adjust spacing between form elements and header */
+    .container h1 {
+        font-size: 2rem;
+        font-weight: bold;
+        text-align: center;
+        color: #333;
+        margin-bottom: 20px;
+    }
+
+    margin-bottom: 5px;
+}
+
+.party-form input {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    max-width: 400px;
+}
+
+.party-form button {
+    background-color: #FF6F61;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    max-width: 150px;
+}
+
+.party-form button:hover {
+    background-color: #E64A45;
+}
