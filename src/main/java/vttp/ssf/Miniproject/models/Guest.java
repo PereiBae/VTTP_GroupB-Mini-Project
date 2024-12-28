@@ -1,12 +1,18 @@
 package vttp.ssf.Miniproject.models;
 
+import jakarta.validation.constraints.NotEmpty;
+import org.springframework.context.MessageSource;
+
 import java.util.List;
 
 public class Guest {
 
     private String id;
+    @NotEmpty(message = "Please enter a name")
     private String name;
+    @NotEmpty(message = "Please indicate whether the guest is coming to the party")
     private String rsvp;
+    @NotEmpty(message = "Please indicate if u have any preference")
     private List<String> preferences;
 
     public Guest() {

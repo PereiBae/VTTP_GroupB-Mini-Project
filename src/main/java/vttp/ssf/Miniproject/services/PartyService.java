@@ -14,10 +14,7 @@ import vttp.ssf.Miniproject.models.Party;
 import vttp.ssf.Miniproject.repositories.PartyRepository;
 
 import java.io.StringReader;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -54,12 +51,15 @@ public class PartyService {
     public List<String> getIngredients() {
         List<String> ingredients = partyRepo.getCachedData("ingredients");
         if (ingredients != null) {
+            Collections.sort(ingredients);
             System.out.println("Ingredients retrieved from cache.");
             return ingredients;
         }
 
         // Fetch ingredients from API
         ingredients = fetchListFromAPI("/list.php?i=list", "strIngredient1");
+        ingredients = new ArrayList<>(ingredients);
+        Collections.sort(ingredients);
         if (!ingredients.isEmpty()) {
             System.out.println("Caching ingredients...");
             partyRepo.cacheData("ingredients", ingredients);

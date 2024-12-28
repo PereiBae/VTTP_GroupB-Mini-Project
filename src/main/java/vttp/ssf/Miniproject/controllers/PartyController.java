@@ -1,9 +1,11 @@
 package vttp.ssf.Miniproject.controllers;
 
 import jakarta.servlet.http.HttpSession;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import vttp.ssf.Miniproject.models.Cocktail;
 import vttp.ssf.Miniproject.models.Details;
@@ -149,11 +151,16 @@ public class PartyController {
     }
 
     @PostMapping("/guests/add")
-    public String addGuest(@ModelAttribute Guest guest, HttpSession session) {
+    public String addGuest(@Valid @ModelAttribute Guest guest, BindingResult bindingResult, HttpSession session) {
         String userEmail = (String) session.getAttribute("userEmail");
         if (userEmail == null) {
             return "redirect:/login";
         }
+
+        if (bindingResult.hasErrors()) {
+            return "guests";
+        }
+
         if (guest.getId() == null) {
             String guestId = UUID.randomUUID().toString().substring(0, 7);
             guest.setId(guestId);
