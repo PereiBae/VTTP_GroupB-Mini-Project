@@ -10,16 +10,16 @@
       <nav class="navigation">
         <a href="/home/results">Drinks</a>
         <a href="/home/favourites">Favourites</a>
-        <a href="/home/parties">Parties</a>
         <a href="/home/guests">Guests</a>
+        <a href="/home/parties">Parties</a>
       </nav>
       <div class="auth-section">
         <!-- Dropdown Menu for Logged-in User -->
         <div th:if="${session.user != null}" class="user-menu">
           <div class="menu-name" th:text="${session.user}"></div>
           <div class="dropdown">
-            <a href="/home/favourites">Favourites</a>
             <a href="/home/parties">Parties</a>
+            <a href="/home/favourites">Favourites</a>
             <a href="/home/guests">Guests</a>
             <a href="/logout">Log out</a>
           </div>
