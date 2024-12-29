@@ -302,8 +302,9 @@ public class PartyService {
                     guest.setId(obj.getString("id"));
                     guest.setName(obj.getString("name"));
                     guest.setRsvp(obj.getString("rsvp"));
+                    // Fix preferences processing
                     guest.setPreferences(obj.getJsonArray("preferences").stream()
-                            .map(JsonValue::toString)
+                            .map(pref -> ((JsonString) pref).getString()) // Get plain string
                             .collect(Collectors.toList()));
                     return guest;
                 })

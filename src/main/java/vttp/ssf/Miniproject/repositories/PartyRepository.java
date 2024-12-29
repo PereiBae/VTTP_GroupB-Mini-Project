@@ -127,18 +127,28 @@ public class PartyRepository {
 
     public void addGuest(String email, Guest guest) {
         String redisKey = "guests: " + email;
-        JsonArray preferences = Json.createArrayBuilder(guest.getPreferences()).build();
+
+        // Correctly build the JSON array with plain strings
+        JsonArrayBuilder preferencesBuilder = Json.createArrayBuilder();
+        for (String preference : guest.getPreferences()) {
+            preferencesBuilder.add(preference); // Add plain strings, not JSON-encoded strings
+        }
+
+        JsonArray preferences = preferencesBuilder.build();
+
+        // Build the guest JSON object
         String guestJson = Json.createObjectBuilder()
                 .add("id", guest.getId())
                 .add("name", guest.getName())
                 .add("rsvp", guest.getRsvp())
-                .add("preferences", preferences)
+                .add("preferences", preferences) // Add plain string preferences
                 .build()
                 .toString();
 
         System.out.println("Adding guest: " + guest.getName() + " to Redis under key: " + redisKey);
         redisTemplate.opsForHash().put(redisKey, guest.getId(), guestJson);
     }
+
 
 
     public void deleteGuest(String email, String guestId) {
@@ -174,41 +184,26 @@ public class PartyRepository {
         String redisKey = "partyGuests:" + partyId; // Use consistent key
         System.out.println("Saving updated guest list to Redis for party: " + partyId);
         redisTemplate.delete(redisKey); // Clear existing data
-        JsonArray jsonArray;
-        JsonArrayBuilder arrayBuilder = Json.createArrayBuilder();
-        for (Guest guest : guests) {
-            for (int i = 0; i < guest.getPreferences().size(); i++) {
-                arrayBuilder.add(guest.getPreferences().get(i));
+        // Save updated guest list
+        guests.forEach(guest -> {
+            JsonArrayBuilder preferencesBuilder = Json.createArrayBuilder();
+            for (String preference : guest.getPreferences()) {
+                preferencesBuilder.add(Json.createValue(preference)); // Add plain strings
             }
-            jsonArray = arrayBuilder.build();
+
+            JsonArray preferences = preferencesBuilder.build();
+
             String guestJson = Json.createObjectBuilder()
                     .add("id", guest.getId())
                     .add("name", guest.getName())
                     .add("rsvp", guest.getRsvp())
-                    .add("preferences", jsonArray)
+                    .add("preferences", preferences)
                     .build()
                     .toString();
+
             redisTemplate.opsForHash().put(redisKey, guest.getId(), guestJson);
-        }
-        System.out.println("Updated guests saved to Redis for party: " + partyId);
+        });
     }
-
-
-//    public void saveDrinksToParty(String partyId, List<Details> drinks) {
-//        JsonArray drinksArray = Json.createArrayBuilder(
-//                drinks.stream()
-//                        .map(drink -> Json.createObjectBuilder()
-//                                .add("id", drink.getId())
-//                                .add("name", drink.getName())
-//                                .add("thumbnail", drink.getThumbnail())
-//                                .add("ingredients", Json.createArrayBuilder(drink.getIngredients()))
-//                                .add("instructions", drink.getInstructions())
-//                                .build())
-//                        .toList()
-//        ).build();
-//
-//        redisTemplate.opsForHash().put("partyDrinks:" + partyId, "drinks", drinksArray.toString());
-//    }
 
     public List<Guest> getGuestsForParty(String partyId) {
         String redisKey = "partyGuests:" + partyId;
@@ -229,9 +224,13 @@ public class PartyRepository {
                     guest.setId(obj.getString("id"));
                     guest.setName(obj.getString("name"));
                     guest.setRsvp(obj.getString("rsvp"));
-                    guest.setPreferences(obj.getJsonArray("preferences").stream()
-                            .map(JsonValue::toString)
+
+                    // Deserialize preferences as plain strings
+                    JsonArray preferencesArray = obj.getJsonArray("preferences");
+                    guest.setPreferences(preferencesArray.stream()
+                            .map(pref -> pref.toString().replaceAll("\"", "").replaceAll("\\\\", "")) // Remove quotes and backslashes
                             .toList());
+
                     return guest;
                 })
                 .toList();
@@ -305,7 +304,14 @@ public class PartyRepository {
 
     public void addGuestToParty(String partyId, Guest guest) {
         String redisKey = "partyGuests:" + partyId;
-        JsonArray preferences = Json.createArrayBuilder(guest.getPreferences()).build();
+        // Build JSON object for the guest
+        JsonArrayBuilder preferencesBuilder = Json.createArrayBuilder();
+        for (String preference : guest.getPreferences()) {
+            preferencesBuilder.add(Json.createValue(preference)); // Add plain strings
+        }
+
+        JsonArray preferences = preferencesBuilder.build();
+
         String guestJson = Json.createObjectBuilder()
                 .add("id", guest.getId())
                 .add("name", guest.getName())
@@ -314,7 +320,7 @@ public class PartyRepository {
                 .build()
                 .toString();
 
-        System.out.println("Adding guest: " + guest.getName() + " to party ID: " + partyId);
+        System.out.println("Adding guest to party: " + guestJson);
         redisTemplate.opsForHash().put(redisKey, guest.getId(), guestJson);
     }
 
