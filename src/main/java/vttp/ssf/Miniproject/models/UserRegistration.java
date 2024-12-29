@@ -9,6 +9,7 @@ public class UserRegistration {
 
     @Email(message = "Please use a valid email address")
     @NotEmpty(message = "Please enter your email address")
+    @Pattern(regexp = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$", message = "Please use a valid email address with a domain suffix (e.g., .com, .org, .net)")
     private String email;
 
     @NotEmpty(message = "Your username cannot be empty")
