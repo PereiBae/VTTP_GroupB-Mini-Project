@@ -28,8 +28,9 @@
     </div>
 
     <button type="submit" class="btn">Sign In</button>
-    <p class="error" th:if="${message}" th:text="${message}"></p>
-
+    <div class="invalidCredential">
+      <p th:if="${message}" th:text="${message}"></p>
+    </div>
     <div class="form-footer">
       <p>Don't have an account? <a th:href="@{/register}">Register here</a></p>
     </div>

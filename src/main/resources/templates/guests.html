@@ -14,23 +14,42 @@
 <div class="container">
     <h1>Guest List</h1>
 
-    <form method="post" action="/home/guests/add" class="guest-form">
-        <input type="text" name="name" placeholder="Guest Name" required>
-        <select name="rsvp" required>
-            <option value="Attending">Attending</option>
-            <option value="Not Attending">Not Attending</option>
-            <option value="Maybe">Maybe</option>
-        </select>
-        <label>Preferences (Choose none if u have no preference):</label>
+    <form method="post" th:action="@{/home/guests/add}" th:object="${guest}" class="guest-form">
+        <!-- Name Field -->
         <div>
-            <input type="checkbox" name="preferences" value="Alcoholic"> Alcoholic
-            <input type="checkbox" name="preferences" value="Non-Alcoholic"> Non-Alcoholic
-            <input type="checkbox" name="preferences" value="Vodka"> Vodka
-            <input type="checkbox" name="preferences" value="Whiskey"> Whiskey
-            <input type="checkbox" name="preferences" value="Tequila"> Tequila
-            <input type="checkbox" name="preferences" value="Gin"> Gin
-            <input type="checkbox" name="preferences" value="Rum"> Rum
+            <label for="name">Guest Name:</label>
+            <input type="text" id="name" th:field="*{name}" placeholder="Guest Name" required>
+            <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="error-message"></p>
         </div>
+
+        <!-- RSVP Field -->
+        <div>
+            <label for="rsvp">RSVP:</label>
+            <select id="rsvp" th:field="*{rsvp}" required>
+                <option value="" disabled selected>Select RSVP</option>
+                <option value="Attending">Attending</option>
+                <option value="Not Attending">Not Attending</option>
+                <option value="Maybe">Maybe</option>
+            </select>
+            <p th:if="${#fields.hasErrors('rsvp')}" th:errors="*{rsvp}" class="error-message"></p>
+        </div>
+
+        <!-- Preferences Field -->
+        <div>
+            <label>Preferences:</label>
+            <div>
+                <input type="checkbox" th:field="*{preferences}" value="Alcoholic"> Alcoholic
+                <input type="checkbox" th:field="*{preferences}" value="Non-Alcoholic"> Non-Alcoholic
+                <input type="checkbox" th:field="*{preferences}" value="Vodka"> Vodka
+                <input type="checkbox" th:field="*{preferences}" value="Whiskey"> Whiskey
+                <input type="checkbox" th:field="*{preferences}" value="Tequila"> Tequila
+                <input type="checkbox" th:field="*{preferences}" value="Gin"> Gin
+                <input type="checkbox" th:field="*{preferences}" value="Rum"> Rum
+            </div>
+            <p th:if="${#fields.hasErrors('preferences')}" th:errors="*{preferences}" class="error-message"></p>
+        </div>
+
+        <!-- Submit Button -->
         <button type="submit">Add Guest</button>
     </form>
 

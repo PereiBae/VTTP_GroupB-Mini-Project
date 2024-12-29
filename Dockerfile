@@ -1,5 +1,4 @@
 FROM openjdk:23-jdk-oracle AS builder
-ENV JAVA_TOOL_OPTIONS="-XX:UseSVE=0"
 
 ARG COMPILED_DIR=/compiledir
 
@@ -25,7 +24,6 @@ EXPOSE ${SERVER_PORT}
 
 #second stage
 FROM openjdk:23-jdk-oracle
-ENV JAVA_TOOL_OPTIONS="-XX:UseSVE=0"
 
 ARG WORK_DIR=/app
 

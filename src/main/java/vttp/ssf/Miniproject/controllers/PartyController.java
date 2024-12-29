@@ -104,7 +104,7 @@ public class PartyController {
     }
 
     @PostMapping("/details/{drinkId}")
-    public String postDetailPage(@PathVariable String drinkId, Model model, HttpSession session) {
+    public String postDetailPage(@PathVariable String drinkId, HttpSession session) {
         if (session.getAttribute("user") != null) {
            String email = (String) session.getAttribute("userEmail");
            Details details = partyService.getCocktailDetails(drinkId);
@@ -146,12 +146,13 @@ public class PartyController {
 
         List<Guest> guests = partyService.getGuestList(userEmail);
         model.addAttribute("guests", guests);
+        model.addAttribute("guest", new Guest());
         return "guests";
 
     }
 
     @PostMapping("/guests/add")
-    public String addGuest(@Valid @ModelAttribute Guest guest, BindingResult bindingResult, HttpSession session) {
+    public String addGuest(@Valid @ModelAttribute("guest") Guest guest, BindingResult bindingResult, HttpSession session) {
         String userEmail = (String) session.getAttribute("userEmail");
         if (userEmail == null) {
             return "redirect:/login";
@@ -242,10 +243,14 @@ public class PartyController {
     }
 
     @PostMapping("/parties/create")
-    public String createParty(@ModelAttribute Party party, HttpSession session) {
+    public String createParty(@Valid @ModelAttribute("party") Party party, BindingResult bindingResult, HttpSession session) {
         String userEmail = (String) session.getAttribute("userEmail");
         if (userEmail == null) {
             return "redirect:/login";
+        }
+
+        if (bindingResult.hasErrors()) {
+            return "partyCreate";
         }
 
         if (party.getId() == null) {
@@ -286,7 +291,7 @@ public class PartyController {
         model.addAttribute("availableGuests", availableGuests); // For the dropdown
         model.addAttribute("availableDrinks", availableDrinks); // For the dropdown
 
-        return "partyDetails";
+        return "testPartyDetails";
     }
 
 
@@ -342,5 +347,6 @@ public class PartyController {
         partyService.removeDrinkFromParty(id, drinkId);
         return "redirect:/home/parties/details/" + id;
     }
+
 
 }

@@ -12,23 +12,36 @@
 
 <div class="partycreate-container">
   <h1>Create a New Party</h1>
-  <form method="post" action="/home/parties/create" class="party-form">
+  <form method="post" th:action="@{/home/parties/create}" th:object="${party}" class="party-form">
+
+    <!-- Party Name -->
     <div>
       <label for="name">Party Name:</label>
-      <input type="text" id="name" name="name" placeholder="Enter party name" required>
+      <input type="text" id="name" th:field="*{name}" placeholder="Enter party name" required>
+      <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="error-message"></p>
     </div>
+
+    <!-- Party Date -->
     <div>
       <label for="date">Date:</label>
-      <input type="date" id="date" name="date" required>
+      <input type="date" id="date" th:field="*{date}" required>
+      <p th:if="${#fields.hasErrors('date')}" th:errors="*{date}" class="error-message"></p>
     </div>
+
+    <!-- Party Time -->
     <div>
       <label for="time">Time:</label>
-      <input type="time" id="time" name="time" required>
+      <input type="time" id="time" th:field="*{time}" required>
+      <p th:if="${#fields.hasErrors('time')}" th:errors="*{time}" class="error-message"></p>
     </div>
+
+    <!-- Location -->
     <div>
       <label for="location">Location (Optional):</label>
-      <input type="text" id="location" name="location" placeholder="Enter location">
+      <input type="text" id="location" th:field="*{location}" placeholder="Enter location">
     </div>
+
+    <!-- Submit Button -->
     <button type="submit">Create Party</button>
   </form>
 </div>

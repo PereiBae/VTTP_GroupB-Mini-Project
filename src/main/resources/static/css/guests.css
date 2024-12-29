@@ -108,3 +108,9 @@
 .guest-table .delete-btn:hover {
     background: #e65c50;
 }
+
+.error-message {
+    color: #ff6f61;
+    font-size: 12px;
+    margin-top: 5px;
+}

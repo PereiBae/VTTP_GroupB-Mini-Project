@@ -26,11 +26,11 @@
 }
 
 .party-table th {
-    background-color: #ff6f61; /* Primary theme color for header */
-    color: #ffffff;
-    font-weight: bold;
-    text-transform: uppercase;
+    background: linear-gradient(135deg, #ff6f61, #e65c50); /* Gradient header background */
+    color: white;
+    text-transform: uppercase; /* Consistent with the Flyhyer theme */
     font-size: 14px;
+    letter-spacing: 1px;
 }
 
 .party-table td {
@@ -49,8 +49,8 @@
 /* Create Party Button */
 .create-btn {
     display: inline-block;
-    background-color: #ff6f61;
-    color: #ffffff;
+    background-color: #86e49d;
+    color: #006b21;
     padding: 10px 20px;
     border-radius: 8px;
     text-decoration: none;
@@ -62,11 +62,11 @@
 }
 
 .create-btn:hover {
-    background-color: #e65c50; /* Darker hover effect */
+    background-color: #5bc67c; /* Darker hover effect */
 }
 
 /* Action Buttons */
-.edit-btn, .delete-btn {
+.edit-btn, .delete-btn, .details-btn {
     color: #ffffff;
     padding: 8px 12px;
     border-radius: 6px;
@@ -81,19 +81,26 @@
 }
 
 .edit-btn {
-    background-color: #007bff; /* Blue color for edit */
+    background-color: #b18d42; /* Blue color for edit */
 }
 
 .edit-btn:hover {
-    background-color: #0056b3; /* Darker blue hover */
+    background-color: #f8e0af; /* Darker blue hover */
 }
 
 .delete-btn {
-    background-color: #ff6f61; /* Primary theme color for delete */
+    background-color: #b30021; /* Primary theme color for delete */
 }
 
 .delete-btn:hover {
-    background-color: #e65c50; /* Darker red hover */
+    background-color: #cf3b56; /* Darker red hover */
+}
+.details-btn {
+    background-color: #3f95b5; /* Primary theme color for delete */
+}
+
+.details-btn:hover {
+    background-color: #91d8f1; /* Darker red hover */
 }
 
 /* Responsive Table Adjustments */

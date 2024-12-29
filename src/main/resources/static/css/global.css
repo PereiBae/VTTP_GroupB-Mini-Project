@@ -96,5 +96,5 @@ header .auth-section .btn {
 }
 
 .dropdown a:hover {
-    background-color: #f0f0f0;
+    background-color: #ffe6e0; /* Soft hover effect */
 }

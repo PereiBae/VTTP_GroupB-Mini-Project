@@ -1,0 +1,158 @@
+/* General Styling */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
+}
+
+.partyDetails-container {
+    padding: 2rem;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    max-width: 1200px;
+    margin: 2rem auto; /* Adjusted margin to balance space from the header */
+}
+
+.party-info p {
+    font-size: 1.1rem;
+    margin: 0.5rem 0;
+}
+
+/* Grid Layout */
+.grid-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+/* Tables Styling */
+.table-container {
+    background-color: #fff;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.table-container th {
+    background: linear-gradient(135deg, #ff6f61, #e65c50); /* Gradient header background */
+    color: white;
+    text-transform: uppercase; /* Consistent with the Flyhyer theme */
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+table th, table td {
+    text-align: left;
+    padding: 1rem;
+    border-bottom: 1px solid #ddd;
+}
+
+table th {
+    background-color: #f0f0f0;
+    font-size: 1rem;
+}
+
+table tr:nth-child(even) {
+    background-color: #fafafa;
+}
+
+table tr:hover {
+    background-color: #ffe6e0; /* Soft hover effect */
+}
+
+/* Ensure proper spacing and height */
+table td {
+    vertical-align: middle; /* Aligns content vertically in the middle */
+    min-height: 90px; /* Adds extra height to table rows */
+}
+
+/* Forms Styling */
+.form-section {
+    margin-top: 2rem;
+    padding: 1rem;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.form-section h3 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+/* Buttons */
+.action-btn{
+    background-color: #86e49d;
+    color: #006b21;
+    padding: 0.4rem 0.8rem; /* Slightly reduced button size */
+    font-size: 0.75rem; /* Adjusted font size */
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-right: 0.5rem; /* Added spacing between buttons */
+    display: inline-block; /* Ensures proper alignment side-by-side */
+}
+
+.delete-btn {
+    background-color: #f4c6cf;
+    color: #b30021;
+    padding: 0.4rem 0.8rem; /* Slightly reduced button size */
+    font-size: 0.75rem; /* Adjusted font size */
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-right: 0.5rem; /* Added spacing between buttons */
+    display: inline-block; /* Ensures proper alignment side-by-side */
+}
+
+.action-btn:hover{
+    background-color: #97efac;
+}
+.delete-btn:hover {
+    background-color: #f6d8de;
+}
+
+/* Images */
+.thumbnail {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* Section Titles */
+.section-title {
+    margin-top: 1.5rem; /* Reduced space above title */
+    font-size: 2rem;
+    font-weight: bold;
+    color: #ff6f61;
+    text-align: left;
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .grid-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .action-btn, .delete-btn {
+        padding: 0.4rem 0.8rem; /* Further reduced button size for smaller screens */
+        font-size: 0.7rem;
+    }
+
+    table td {
+        min-height: 70px; /* Adjust row height for smaller screens */
+    }
+}

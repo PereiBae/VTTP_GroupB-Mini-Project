@@ -1,12 +1,17 @@
 package vttp.ssf.Miniproject.models;
 
+import jakarta.validation.constraints.NotEmpty;
+
 import java.util.List;
 
 public class Party {
 
     private String id;       // Unique ID for the party
+    @NotEmpty(message = "Please enter a name for the Party")
     private String name;     // Party name
+    @NotEmpty(message = "Please enter a date for when you are throwing this party")
     private String date;     // Party date
+    @NotEmpty(message = "Please enter a rough timing of when the Party is")
     private String time;     // Party time
     private String location; // Optional: Location
     private String userEmail; // Link the party to the user who created it

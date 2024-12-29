@@ -72,7 +72,10 @@ public class LoginController {
     }
 
     @GetMapping("/register")
-    public String getRegister(Model model) {
+    public String getRegister(Model model, HttpSession session) {
+        if(session.getAttribute("user") != null){
+            return "redirect:/home";
+        }
         UserRegistration user = new UserRegistration();
         model.addAttribute("userregister", user);
         return "register";

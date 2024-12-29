@@ -11,7 +11,7 @@
 <div th:insert="~{fragments/header :: header}"></div>
 
 <div class="container">
-  <h1>Your Favourites</h1>
+  <h1>Favourite Drinks</h1>
   <div th:if="${favourites.isEmpty()}" class="no-favourites">
     <p>No drinks bookmarked at the moment. Start exploring!</p>
     <a href="/home/results" class="search-btn">Search Drinks</a>
@@ -20,7 +20,7 @@
     <table class="favourites-table">
       <thead>
       <tr>
-        <th>Thumbnail</th>
+        <th>Preview</th>
         <th>Name</th>
         <th>Ingredients</th>
         <th>Actions</th>

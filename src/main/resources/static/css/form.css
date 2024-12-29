@@ -81,3 +81,9 @@
     text-decoration: underline;
     font-weight: 500;
 }
+
+.invalidCredential {
+    color: #ff6f61 !important;
+    font-size: 12px;
+    margin-top: 5px;
+}
