@@ -52,6 +52,35 @@
     margin: 0 auto; /* Center align the form */
 }
 
+/* Guest Form Preferences Styling */
+.guest-form div {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Add spacing between each checkbox and label group */
+    align-items: center;
+}
+
+.guest-form div label {
+    display: flex;
+    align-items: center; /* Align checkbox and text vertically */
+    gap: 8px; /* Space between checkbox and label text */
+    font-size: 14px;
+    white-space: nowrap; /* Prevent labels from wrapping to a new line */
+}
+
+.guest-form div input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    margin: 0; /* Ensure no extra margin around checkboxes */
+    vertical-align: middle; /* Ensure alignment with label text */
+}
+
+
+.guest-form label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
 .guest-form input, .guest-form select {
     padding: 10px;
     border-radius: 5px;
@@ -59,21 +88,25 @@
     font-size: 14px;
     color: #333;
     max-width: 100%;
+    width: 100%; /* Ensure inputs stretch the full width of their container */
 }
 
-.guest-form div {
+.guest-form .form-group {
     display: flex;
-    flex-wrap: wrap; /* Ensure items wrap if they exceed one line */
-    gap: 10px; /* Add spacing between checkboxes */
+    justify-content: space-between;
+    align-items: center; /* Align labels and inputs vertically */
+    gap: 20px;
 }
 
-.guest-form div input {
-    margin-right: 5px; /* Space between the checkbox and the label */
+.guest-form .form-group label {
+    flex: 1; /* Ensure labels take equal space */
+    text-align: right; /* Align labels to the right */
+    padding-right: 10px;
 }
 
-.guest-form label {
-    font-weight: bold;
-    margin-bottom: 5px;
+.guest-form .form-group input,
+.guest-form .form-group select {
+    flex: 2; /* Ensure inputs take more space than labels */
 }
 
 /* Guest Form Button */
@@ -86,6 +119,7 @@
     cursor: pointer;
     font-size: 14px;
     transition: all 0.3s ease-in-out;
+    align-self: center; /* Center the button */
 }
 
 .guest-form button:hover {

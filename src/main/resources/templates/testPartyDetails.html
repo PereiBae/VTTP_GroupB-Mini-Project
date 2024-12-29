@@ -85,9 +85,9 @@
             <td><img th:src="${drink.thumbnail}" alt="Drink Thumbnail" class="thumbnail"></td>
             <td th:text="${drink.name}"></td>
             <td>
-                <a th:href="@{'/home/details/' + ${drink.id}}" class="action-btn">Details</a>
                 <form th:action="@{'/home/party/' + ${party.id} + '/removeDrink/' + ${drink.id}}" method="post">
                   <button type="submit" class="delete-btn">Remove</button>
+                  <a th:href="@{'/home/details/' + ${drink.id}}" class="action-btn">Details</a>
                 </form>
             </td>
           </tr>
@@ -106,6 +106,9 @@
             </option>
           </select>
           <button type="submit" class="action-btn">Add Drink</button>
+          <a th:href="@{/home/results}">
+            <button type="button" class="search-btn">Search for Drink</button>
+          </a>
         </form>
       </div>
     </section>

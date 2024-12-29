@@ -103,6 +103,19 @@ table td {
     display: inline-block; /* Ensures proper alignment side-by-side */
 }
 
+.search-btn{
+    color: #3f95b5;
+    background-color: #c3e8fa;
+    padding: 0.4rem 0.8rem; /* Slightly reduced button size */
+    font-size: 0.75rem; /* Adjusted font size */
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-right: 0.5rem; /* Added spacing between buttons */
+    display: inline-block; /* Ensures proper alignment side-by-side */
+}
+
 .delete-btn {
     background-color: #f4c6cf;
     color: #b30021;
