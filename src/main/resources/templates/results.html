@@ -33,7 +33,7 @@
               th:selected="${category == currentCategory}"></option>
     </select>
 
-    <label for="alcoholic">Alcoholic:</label>
+    <label for="alcoholic">Alcoholic: <small>(Use this filter separate from the other 2 filters)</small></label>
     <select id="alcoholic" name="alcoholic">
       <option value="">-- Select Alcoholic --</option>
       <option th:each="alcoholic : ${alcoholicFilters}"

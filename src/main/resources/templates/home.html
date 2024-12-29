@@ -62,7 +62,7 @@
     </section>
 
     <!-- Call to Action -->
-    <section class="cta-section">
+    <section class="cta-section" th:if="${username == null}">
         <h2>Get Started Now!</h2>
         <p>Sign up today and unlock exclusive tools to take your party planning to the next level.</p>
         <a href="/register" class="btn cta-btn">Join Now</a>
