@@ -224,7 +224,7 @@ public class PartyService {
 
     public Details getCocktailDetails(String id) {
         Details cocktail = new Details();
-        String instructions= null;
+        String instructions = null;
         String thumbnail = null;
         String idDrink = null;
         String name = null;
@@ -252,18 +252,22 @@ public class PartyService {
                             String ingredient = drink.getString(ingredientKey, null);
                             String measure = drink.getString(measureKey, null);
 
-                            // Only add if both ingredient and measure are not null
-                            if (ingredient != null && !ingredient.isEmpty() && measure != null && !measure.isEmpty()) {
-                                ingredientsList.add(measure.trim() + " of " + ingredient.trim());
+                            if (ingredient != null && !ingredient.isEmpty()) {
+                                // Add ingredient and measure to the list
+                                if (measure != null && !measure.isEmpty()) {
+                                    ingredientsList.add(measure.trim() + " " + ingredient.trim());
+                                } else {
+                                    ingredientsList.add(ingredient.trim()); // Add ingredient without measure
+                                }
                             }
                         }
+
+                        idDrink = drink.getString("idDrink");
+                        instructions = drink.getString("strInstructions", null);
+                        thumbnail = drink.getString("strDrinkThumb", null);
+                        name = drink.getString("strDrink", null);
                     }
-                    for(JsonObject instruction : drinksArray.getValuesAs(JsonObject.class)) {
-                        idDrink = instruction.getString("idDrink");
-                        instructions = instruction.getString("strInstructions", null);
-                        thumbnail = instruction.getString("strDrinkThumb", null);
-                        name = instruction.getString("strDrink", null);
-                    }
+
                     cocktail.setName(name);
                     cocktail.setId(idDrink);
                     cocktail.setInstructions(instructions);
@@ -278,6 +282,7 @@ public class PartyService {
             return null;
         }
     }
+
 
     public void saveDrinkDetails(Details details, String email) {
         partyRepo.saveDrinkDetails(details, email);
