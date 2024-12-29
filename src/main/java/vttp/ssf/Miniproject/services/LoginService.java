@@ -11,6 +11,7 @@ public class LoginService {
     @Autowired
     private UserRepository userRepo;
 
+    // Authenticates a user by checking their email/username and password against stored data.
     public boolean authenticate(String identifier, String password) {
 
         String message = userRepo.authenticate(identifier, password);
@@ -21,19 +22,23 @@ public class LoginService {
         return true;
     }
 
+    // Saves a new user's details (username, password, email, and other attributes) into Redis.
     public void saveNewUser(UserRegistration user) {
         userRepo.saveNewUser(user);
         System.out.println("User has been saved to Redis");
     }
 
+    // Retrieves the username of a user using their email.
     public String findUsername(String identifier) {
         return userRepo.findUsername(identifier);
     }
 
+    // Retrieves the email of a user using their username.
     public String findEmail(String identifier) {
         return userRepo.findEmail(identifier);
     }
 
+    // Checks if a user exists by looking up the email or username in Redis.
     public boolean userExists(String identifier) {
         return userRepo.checkUserExists(identifier);
     }

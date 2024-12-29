@@ -222,6 +222,7 @@ public class PartyService {
         return resultSet != null ? new ArrayList<>(resultSet) : List.of();
     }
 
+    // Fetches drink details from an external API using the drink ID.
     public Details getCocktailDetails(String id) {
         Details cocktail = new Details();
         String instructions = null;
@@ -316,6 +317,7 @@ public class PartyService {
                 .toList();
     }
 
+    // Adds a guest to the user's general guest list.
     public void addGuest(String email, Guest guest) {
         partyRepo.addGuest(email, guest);
     }
@@ -324,6 +326,7 @@ public class PartyService {
         partyRepo.deleteGuest(email, guestId);
     }
 
+    // Retrieves a list of parties for a specific user from the repository.
     public List<Party> getParties(String email){
         List<Object> rawParties = partyRepo.getParties(email);
         return rawParties.stream()
@@ -342,6 +345,7 @@ public class PartyService {
                 .toList();
     }
 
+    // Removes a party using the user's email and party ID.
     public void deleteParty(String email, String id) {
         partyRepo.deleteParty(email, id);
     }
@@ -362,10 +366,12 @@ public class PartyService {
         return party;
     }
 
+    // Saves party details to the repository.
     public void saveParty(Party updatedParty) {
         partyRepo.saveParty(updatedParty);
     }
 
+    // Retrieves guests specific to a party.
     public List<Guest> getGuestsForParty(String id) {
         return partyRepo.getGuestsForParty(id);
     }
@@ -382,11 +388,13 @@ public class PartyService {
         return partyRepo.getDrinkDetails(id, email);
     }
 
+    // Adds a guest to a party.
     public void addGuestToParty(String partyId, Guest guest) {
         System.out.println("Adding guest: " + guest.getName() + " to party: " + partyId);
         partyRepo.addGuestToParty(partyId, guest);
     }
 
+    // Removes a guest from a party by ID.
     public void removeGuestFromParty(String partyId, String guestId) {
         System.out.println("Fetching guests for party ID: " + partyId);
         List<Guest> existingGuests = partyRepo.getGuestsForParty(partyId);
@@ -423,11 +431,13 @@ public class PartyService {
                 .toList();
     }
 
+    // Adds a drink to a party.
     public void addDrinkToParty(String partyId, Details drink) {
         System.out.println("Adding drink: " + drink.getName() + " to party: " + partyId);
         partyRepo.addDrinkToParty(partyId, drink);
     }
 
+    // Removes a drink from a party.
     public void removeDrinkFromParty(String partyId, String drinkId) {
         System.out.println("Removing drink with ID: " + drinkId + " from party: " + partyId);
         partyRepo.removeDrinkFromParty(partyId, drinkId);

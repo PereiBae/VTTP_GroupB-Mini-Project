@@ -27,6 +27,7 @@ public class PartyController {
     @Autowired
     private LoginService loginService;
 
+    // Displays the home page with a welcome message.
     @GetMapping
     public String getHomePage(Model model, HttpSession session) {
         if (session.getAttribute("user") == null) {
@@ -38,6 +39,7 @@ public class PartyController {
         return "home";
     }
 
+    // Displays paginated search results for cocktails.
     @GetMapping("/results")
     public String getPaginatedResults(
             @RequestParam(required = false) String ingredient,
@@ -96,6 +98,7 @@ public class PartyController {
         return "results";
     }
 
+    // Fetches detailed information about a specific cocktail.
     @GetMapping("/details/{drinkId}")
     public String getDetailPage(@PathVariable String drinkId, Model model) {
         Details details = partyService.getCocktailDetails(drinkId);
@@ -103,6 +106,7 @@ public class PartyController {
         return "drinkDetails";
     }
 
+    // Saves a cocktail to the user's favorites.
     @PostMapping("/details/{drinkId}")
     public String postDetailPage(@PathVariable String drinkId, HttpSession session) {
         if (session.getAttribute("user") != null) {
@@ -114,6 +118,7 @@ public class PartyController {
         return "redirect:/login";
     }
 
+    // Displays the user's favorite cocktails.
     @GetMapping("/favourites")
     public String getFavourites(Model model, HttpSession session) {
         String userEmail = (String) session.getAttribute("userEmail");
@@ -127,6 +132,7 @@ public class PartyController {
         return "favourites";
     }
 
+    // Removes a drink from the favourites
     @PostMapping("/favourites/delete/{id}")
     public String deleteFavourite(@PathVariable String id, HttpSession session) {
         String email = (String) session.getAttribute("userEmail");
@@ -136,6 +142,7 @@ public class PartyController {
         return "redirect:/home/favourites";
     }
 
+    // Displays the user's guests and Add a guest
     @GetMapping("/guests")
     public String getGuests(Model model, HttpSession session) {
         String userEmail = (String) session.getAttribute("userEmail");
@@ -151,6 +158,7 @@ public class PartyController {
 
     }
 
+    // Adds a guest to the list of guests for that user
     @PostMapping("/guests/add")
     public String addGuest(@Valid @ModelAttribute("guest") Guest guest, BindingResult bindingResult, HttpSession session) {
         String userEmail = (String) session.getAttribute("userEmail");
@@ -170,6 +178,7 @@ public class PartyController {
         return "redirect:/home/guests";
     }
 
+    // Removes a guest from the list of guests of that user
     @PostMapping("/guests/delete/{id}")
     public String deleteGuest(@PathVariable String id, HttpSession session) {
         String userEmail = (String) session.getAttribute("userEmail");
@@ -180,6 +189,7 @@ public class PartyController {
         return "redirect:/home/guests";
     }
 
+    // Displays all parties for the user.
     @GetMapping("/parties")
     public String viewParties(HttpSession session, Model model) {
         String userEmail = (String) session.getAttribute("userEmail");
@@ -192,6 +202,7 @@ public class PartyController {
         return "parties";
     }
 
+    // Delete parties for the user
     @PostMapping("/parties/delete/{id}")
     public String deleteParty(@PathVariable String id, HttpSession session) {
         String userEmail = (String) session.getAttribute("userEmail");
@@ -203,6 +214,7 @@ public class PartyController {
         return "redirect:/home/parties";
     }
 
+    // Displays a page for the user th=o edit their parties
     @GetMapping("/parties/edit/{id}")
     public String editPartyForm(@PathVariable String id, HttpSession session, Model model) {
         String userEmail = (String) session.getAttribute("userEmail");
@@ -219,6 +231,7 @@ public class PartyController {
         return "partyEdit";
     }
 
+    // Displays a page with an updated list of parties for the user
     @PostMapping("/parties/edit/{id}")
     public String editedParty(@ModelAttribute Party party ,@PathVariable String id, HttpSession session, Model model) {
         String userEmail = (String) session.getAttribute("userEmail");
@@ -231,6 +244,7 @@ public class PartyController {
         return "redirect:/home/parties";
     }
 
+    // Allows user to create a new party
     @GetMapping("/parties/create")
     public String showPartyCreationForm(HttpSession session, Model model) {
         String userEmail = (String) session.getAttribute("userEmail");
@@ -242,6 +256,7 @@ public class PartyController {
         return "partyCreate";
     }
 
+    // Creates the party and updates the list of parties for the user
     @PostMapping("/parties/create")
     public String createParty(@Valid @ModelAttribute("party") Party party, BindingResult bindingResult, HttpSession session) {
         String userEmail = (String) session.getAttribute("userEmail");
@@ -263,6 +278,7 @@ public class PartyController {
         return "redirect:/home/parties"; // Redirect to the party management page
     }
 
+    // Displays details of a specific party, including guests and drinks
     @GetMapping("/parties/details/{id}")
     public String viewPartyDetails(@PathVariable String id, HttpSession session, Model model) {
         String userEmail = (String) session.getAttribute("userEmail");
@@ -294,7 +310,7 @@ public class PartyController {
         return "testPartyDetails";
     }
 
-
+    // Adds guests to specific parties
     @PostMapping("/party/{id}/addGuest")
     public String addGuestToParty(@PathVariable String id, @RequestParam String guestId, HttpSession session) {
         String userEmail = (String) session.getAttribute("userEmail");
@@ -312,6 +328,7 @@ public class PartyController {
         return "redirect:/home/parties/details/" + id;
     }
 
+    // Removes guests from specific parties
     @PostMapping("/party/{id}/removeGuest/{guestId}")
     public String removeGuestFromParty(@PathVariable String id, @PathVariable String guestId, HttpSession session) {
         String userEmail = (String) session.getAttribute("userEmail");
@@ -325,6 +342,7 @@ public class PartyController {
         return "redirect:/home/parties/details/" + id;
     }
 
+    // Adds drinks from favourite drinks to the specific party
     @PostMapping("/party/{id}/addDrink")
     public String addDrinkToParty(@PathVariable String id, @RequestParam String drinkId, HttpSession session) {
         String userEmail = (String) session.getAttribute("userEmail");
@@ -342,6 +360,7 @@ public class PartyController {
         return "redirect:/home/parties/details/" + id;
     }
 
+    // Remove drinks from the specific parties
     @PostMapping("/party/{id}/removeDrink/{drinkId}")
     public String removeDrinkFromParty(@PathVariable String id, @PathVariable String drinkId) {
         partyService.removeDrinkFromParty(id, drinkId);

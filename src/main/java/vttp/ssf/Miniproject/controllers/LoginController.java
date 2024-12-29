@@ -24,11 +24,13 @@ public class LoginController {
     @Autowired
     private LoginService loginSvc;
 
+    // Redirects to the home page.
     @GetMapping
     public String getHomePage() {
         return "redirect:/home";
     }
 
+    // Returns the login page view.
     @GetMapping("/login")
     public String getLogin(Model model, HttpSession session) {
         if(session.getAttribute("user") == null){
@@ -39,6 +41,7 @@ public class LoginController {
             return "redirect:/home";
     }
 
+    // Processes login information and starts a session if successful.
     @PostMapping("/loggingin")
     public String postLogin(@Valid @ModelAttribute("userlogin") UserLogin user, BindingResult bindingResult, Model model, HttpSession session) {
 
@@ -71,6 +74,7 @@ public class LoginController {
         return "redirect:/home";
     }
 
+    // Returns the registration page view.
     @GetMapping("/register")
     public String getRegister(Model model, HttpSession session) {
         if(session.getAttribute("user") != null){
@@ -81,6 +85,7 @@ public class LoginController {
         return "register";
     }
 
+    // Processes user registration.
     @PostMapping("/registration")
     public String postRegistration(@Valid @ModelAttribute("userregister") UserRegistration user, BindingResult bindingResult, Model model, HttpSession session) {
 
@@ -119,12 +124,14 @@ public class LoginController {
         return "redirect:/home";
     }
 
+    // Invalidates the session and logs the user out.
     @GetMapping("/logout")
     public String logout(HttpSession session) {
         session.invalidate(); // Clear the session
         return "redirect:/home";
     }
 
+    // A health check endpoint.
     @GetMapping(value = "/status", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public ResponseEntity<HttpStatus> getStatus() {
